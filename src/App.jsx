@@ -12,9 +12,7 @@ function App() {
   return (
     <>
       <UserCard />
-      <div className='card-holder'>
-        <PostForm />
-      </div>
+      <PostForm />
       <br /> <br /><br />
     </>
   )
