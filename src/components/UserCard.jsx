@@ -13,8 +13,8 @@ function UserCard() {
     setTag(("@" + inputName + inputAge).trim().replace(" ", ""));
     setSavedName(inputName);
     setSavedAge(inputAge);
-    window.localStorage.setItem('username', savedName);
-    window.localStorage.setItem('userage', savedAge);
+    window.localStorage.setItem('username', inputName);
+    window.localStorage.setItem('userage', String(inputAge)); 
   }
 
   return (

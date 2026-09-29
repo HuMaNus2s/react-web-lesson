@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import Messages from './Messages.jsx';
 
-function PostForm() {
-  const [posts, setPosts] = useState([]);
+function PostForm({posts, setPosts, comments, setComments}) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
@@ -68,6 +67,8 @@ function PostForm() {
               key={post.id}
               post={post}
               onDelete={() => handleDelete(post.id)}
+              comments={comments}
+              setComments={setComments}
             />
           ))
         )}
