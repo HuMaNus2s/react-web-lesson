@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Like from './Like.jsx'
 
 function CommentFunction({ comment, onDelete }) {
   return (
@@ -14,7 +15,8 @@ function CommentFunction({ comment, onDelete }) {
             ✕
           </button>
         </div>
-        <p className="mb-0 small">{comment.content}</p>
+        <p className="mb-0 small pb-2">{comment.content}</p>
+        <Like />
       </div>
     </div>
   );

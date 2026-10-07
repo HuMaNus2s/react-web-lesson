@@ -1,30 +1,25 @@
-import { useState, useEffect } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
-import UserCard from './components/UserCard.jsx'
-import PostForm from './components/PostForm.jsx'
+import { useState, useEffect } from 'react';
+import './App.css';
+import HomePage from './Pages/Home';
 
 function App() {
-
   const getFromStorage = (key, defaultValue) => {
     try {
       const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : defaultValue;
+      if (item === null) return defaultValue;
+      return JSON.parse(item);
     } catch (e) {
-      console.error('Ошибка чтения localStorage:', e);
-      return defaultValue;
+      const item = window.localStorage.getItem(key);
+      return item !== null ? item : defaultValue;
     }
   };
 
-  const [posts, setPosts] = useState(() => 
-    getFromStorage('posts', [])
-  );
-  
-  const [comments, setComments] = useState(() => 
-    getFromStorage('comments', [])
-  );
+  const [name, setName] = useState(() => getFromStorage('username_', ''));
+  const [age, setAge] = useState(() => getFromStorage('userage_', ''));
+  const [savedName, setSavedName] = useState(() => getFromStorage('username', 'Undefined'));
+  const [savedAge, setSavedAge] = useState(() => getFromStorage('userage', '?'));
+  const [posts, setPosts] = useState(() => getFromStorage('posts', []));
+  const [comments, setComments] = useState(() => getFromStorage('comments', []));
 
   useEffect(() => {
     window.localStorage.setItem('posts', JSON.stringify(posts));
@@ -34,18 +29,32 @@ function App() {
     window.localStorage.setItem('comments', JSON.stringify(comments));
   }, [comments]);
 
+  const handleSaveProfile = () => {
+    if (!name.trim()) return;
+    setSavedName(name.trim());
+    setSavedAge(age);
+    localStorage.setItem('username', name.trim());
+    localStorage.setItem('userage', String(age));
+  };
+
+  const profileData = {
+    name, setInputName: setName,
+    age, setInputAge: setAge,
+    savedName, savedAge,
+    onSave: handleSaveProfile
+  };
+
+  const postData = {
+    posts, setPosts,
+    comments, setComments
+  };
+
   return (
-    <>
-      <UserCard />
-      <PostForm 
-      posts={posts}
-      setPosts={setPosts}
-      comments={comments}
-      setComments={setComments}
-      />
-      <br /> <br /><br />
-    </>
-  )
+    <HomePage 
+      profileData={profileData}
+      postData={postData}
+    />
+  );
 }
 
 export default App;

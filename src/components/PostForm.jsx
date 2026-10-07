@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Messages from './Messages.jsx';
 
-function PostForm({posts, setPosts, comments, setComments}) {
+function PostForm({ data }) {
+  const {posts, setPosts, comments, setComments} = data;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
