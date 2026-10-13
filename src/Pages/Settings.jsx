@@ -1,8 +1,14 @@
-function Settings() {
+
+import UserForm from '../components/UserForm'
+
+function Settings({data}) {
     return (
         <section className="container">
-            <h1>Настройки</h1>
-            <p>Потом добавим здесь настройки</p>
+            <h1 className='text-center'>Настройки</h1>
+            <h2>Настройки профиля</h2>
+            <UserForm
+              data={data}
+            />
         </section>
     );
 }

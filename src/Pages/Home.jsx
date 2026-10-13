@@ -11,13 +11,13 @@ function HomePage({ profileData, postData }) {
       <nav className="d-flex justify-content-center gap-3 mb-4">
         <Link 
           to="/" 
-          className={`btn ${location.pathname === '/' ? 'btn-primary' : 'btn-outline-primary'}`}
+          className={`btn ${location.pathname === '/' ? 'btn-primary shadow-sm' : 'btn-outline-primary'}`}
         >
           Главная
         </Link>
         <Link 
           to="/settings" 
-          className={`btn ${location.pathname === '/settings' ? 'btn-primary' : 'btn-outline-primary'}`}
+          className={`btn ${location.pathname === '/settings' ? 'btn-primary shadow-sm' : 'btn-outline-primary'}`}
         >
           Настройки
         </Link>
@@ -31,7 +31,9 @@ function HomePage({ profileData, postData }) {
           </>
         } />
         
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/settings" element={
+          <Settings data={profileData}/>
+        } />
       </Routes>
     </div>
   );

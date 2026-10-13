@@ -27,7 +27,7 @@ function PostForm({ data }) {
 
   return (
     <div className="container" style={{ maxWidth: '720px' }}>
-      <h2 className="mb-4 fw-bold fs-4">Написать пост</h2>
+      <h2 className="fw-bold fs-4">Написать пост</h2>
 
         <form onSubmit={handleSubmit} className="card shadow-sm border-0 mb-4">
           <div className="card-body p-2">
@@ -58,8 +58,8 @@ function PostForm({ data }) {
           </div>
         </form>
 
+      <h2 className="fw-bold fs-4">Мои посты</h2>
       <div className="d-flex flex-column gap-3">
-        <h2 className="mb-4 fw-bold fs-4">Мои посты</h2>
         {posts.length === 0 ? (
           <p className="text-center text-muted">Пока нет постов</p>
         ) : (

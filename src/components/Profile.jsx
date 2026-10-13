@@ -1,6 +1,3 @@
-import { useState, useEffect } from "react";
-import UserForm from './UserForm.jsx'
-
 function Profile({data}) {
 
   const { savedName, savedAge } = data;
@@ -8,7 +5,7 @@ function Profile({data}) {
 
   return (
     <div className="container" style={{ maxWidth: '720px' }}>
-      <h2 className="mb-4 fw-bold fs-4">Профиль</h2>
+      <h2 className="fw-bold fs-4">Профиль</h2>
 
       <div className="card d-flex flex-row align-items-center shadow-sm border-0 mb-4">
         <img src="src\assets\react.svg" alt="avataR" id="icon" className="rounded-circle float-start m-3"/>
@@ -24,10 +21,6 @@ function Profile({data}) {
           </h5>
         </div>
       </div>
-
-      <UserForm
-        data={data}
-      />
 
     </div>
   );
