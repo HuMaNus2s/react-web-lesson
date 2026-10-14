@@ -1,5 +1,5 @@
 function UserForm({data}) {
-    const {inputName, inputAge, setInputName, setInputAge, onSave} = data;
+    const {avatar, setInputAvatar, inputName, inputAge, setInputName, setInputAge, onSave} = data;
     function handler(event) {
       event.preventDefault();
       onSave();

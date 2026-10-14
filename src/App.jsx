@@ -14,8 +14,10 @@ function App() {
     }
   };
 
+  const [avatar, setAvatar] = useState(() => getFromStorage('avatar_', ''));
   const [name, setName] = useState(() => getFromStorage('username_', ''));
   const [age, setAge] = useState(() => getFromStorage('userage_', ''));
+  const [savedAvatar, setSavedAvatar] = useState(() => getFromStorage('avatar', 'src\\assets\\react.svg'));
   const [savedName, setSavedName] = useState(() => getFromStorage('username', 'Undefined'));
   const [savedAge, setSavedAge] = useState(() => getFromStorage('userage', '?'));
   const [posts, setPosts] = useState(() => getFromStorage('posts', []));
@@ -31,15 +33,19 @@ function App() {
 
   const handleSaveProfile = () => {
     if (!name.trim()) return;
+    setSavedAvatar(avatar);
     setSavedName(name.trim());
     setSavedAge(age);
+    localStorage.setItem('avatar', avatar);
     localStorage.setItem('username', name.trim());
     localStorage.setItem('userage', String(age));
   };
 
   const profileData = {
+    avatar, setInputAvatar: setAvatar,
     name, setInputName: setName,
     age, setInputAge: setAge,
+    savedAvatar,
     savedName, savedAge,
     onSave: handleSaveProfile
   };
